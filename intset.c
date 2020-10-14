@@ -319,7 +319,8 @@ intset_subsets(intset* s, size_t k, size_t* n_subsets)
    if (s->n_elems == k) {
       intset** re = (intset**)malloc(sizeof(intset*));
       re[0] = intset_alloc(s->univ, s->n_univ);
-      re[0] = s;
+      intset* myself = intset_clone(s);
+      re[0] = myself;
       *n_subsets = 1;
       return re;
    }

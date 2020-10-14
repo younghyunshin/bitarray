@@ -24,17 +24,14 @@ test1 ()
 	intset_print(stderr, s) ; fprintf(stderr, "\n") ;
 
 	size_t n_ps ;
-	intset ** ps = intset_subsets(s,0, &n_ps) ;
+	intset ** ps = intset_subsets(s,3, &n_ps) ;
 
+	//assert(n_ps == 8) ;
 
-	intset_print(stderr, ps[0]) ; fprintf(stderr, "\n") ;
-	intset_free(ps[0]) ;
-	
 	for (int i = 0 ; i < n_ps ; i++) {
 		intset_print(stderr, ps[i]) ; fprintf(stderr, "\n") ;
 		intset_free(ps[i]) ;
 	}
-	
 	free(ps) ;
 
 	free(s) ;
@@ -74,9 +71,6 @@ main ()
 {
 	test1() ;
 	test2() ;
-	
-
-
 
 	printf("Pass\n") ;
 }
